@@ -1,24 +1,11 @@
 pipeline {
-    agent any
-
+    agent { docker 'maven:3-alpine' }
     stages {
-        stage ('Compile Stage') {
-
+        stage('Example Build') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn package -Dmaven.test.skip=True'
-                    sh 'java -jar target/swiggy-1.0-SNAPSHOT.jar --server.port=9010'
-'
-                }
+                sh 'mvn clean'
+                sh 'mvn package -Dmaven.test.skip=True'
+                sh ' java -jar target/swiggy-1.0-SNAPSHOT.jar --server.port=9011'
             }
         }
     }
