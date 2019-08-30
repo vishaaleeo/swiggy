@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withMaven(maven : 'maven_3_5_0') {
                     sh 'mvn package -Dmaven.test.skip=True'
-                    sh 'java -jar target/swiggy-1.0-SNAPSHOT.jar'
+                    sh 'java -jar target/swiggy-1.0-SNAPSHOT.jar --server.port=9000'
 '
                 }
             }
