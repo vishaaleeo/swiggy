@@ -22,6 +22,10 @@ public class ActivityService {
         activity.setActivityType(activityType);
 
         activityRepository.save(activity);
+
+
+
+
     }
 
     public void recordRestaurantActivity(Integer identifier,String acitivityType){
